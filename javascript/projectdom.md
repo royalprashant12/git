@@ -168,3 +168,34 @@ function newGame() {
 }
 
 ```
+# underfined color
+```javascript
+const start = document.querySelector('#start');
+const stop = document.querySelector('#stop');
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+let interval;
+
+const start_color = () => {
+  if (!interval) {
+    interval = setInterval(changecolor, 1000);
+  }
+  function changecolor() {
+    document.body.style.backgroundColor=
+      getRandomColor();
+  }
+};
+const stopChangingColor = function () {
+  clearInterval(interval);
+  interval = null;
+};
+start.addEventListener('click', start_color);
+stop.addEventListener('click', stopChangingColor);
+```
